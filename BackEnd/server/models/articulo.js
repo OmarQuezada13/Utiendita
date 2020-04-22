@@ -22,7 +22,8 @@ let ArticuloSchema = new Schema({
     required: false
   },
   img: {
-    type: String
+    type: String,
+    default:'noImage.png'
   },
   estatus: {
     type: Boolean,

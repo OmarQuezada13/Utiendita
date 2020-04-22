@@ -5,13 +5,27 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-avatar class="avatar">
+    <img
+      src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.knowmuhammad.org%2Fimg%2Fnoavatarn.png&f=1&nofb=1"
+    />
+  </ion-avatar>
+  <h1 class="ion-text-center">
+    {{this.usuario.nombre}} {{this.usuario.apellidos}}
+  </h1>
+  <ion-button expand="block" (click)="verCompras()" fill="clear" shape="round">
+    Mis Compras
+  </ion-button>
+  <ion-button expand="block" fill="clear" shape="round" disable>
+    Configurar Cuenta
+  </ion-button>
+  <ion-button
+    expand="block"
+    (click)="cerrarSesion()"
+    fill="clear"
+    shape="round"
+  >
+    Cerrar Sesión
+  </ion-button>
 </ion-content>

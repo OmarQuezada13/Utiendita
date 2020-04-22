@@ -1,0 +1,91 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Actualizar Articulo
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form *ngFor="let articulo of articulo">
+    <h1 class="ion-text-center">{{ articulo.nombre }}</h1>
+    <ion-item>
+      <ion-label position="floating"
+        >Nombre <ion-text color="danger">*</ion-text></ion-label
+      >
+      <ion-input
+        [(ngModel)]="nombre"
+        [ngModelOptions]="{ standalone: true }"
+        required
+        type="text"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"
+        >Descripcion <ion-text color="danger">*</ion-text></ion-label
+      >
+      <ion-input
+        [(ngModel)]="descripcion"
+        [ngModelOptions]="{ standalone: true }"
+        required
+        type="text"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"
+        >Costo <ion-text color="danger">*</ion-text></ion-label
+      >
+      <ion-input
+        [(ngModel)]="costo"
+        [ngModelOptions]="{ standalone: true }"
+        required
+        type="number"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"
+        >Inventario <ion-text color="danger">*</ion-text></ion-label
+      >
+      <ion-input
+        [(ngModel)]="inventario"
+        [ngModelOptions]="{ standalone: true }"
+        required
+        type="number"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label
+        >Selecciona una Imagen:
+        <ion-button fill="clear" (click)="tomarFoto()" shape="round">
+          Tomar Foto </ion-button
+        ><ion-button fill="clear" (click)="obtenerFoto()" shape="round">
+          Seleccionar Foto
+        </ion-button></ion-label
+      >
+    </ion-item>
+
+    <ion-button
+      block
+      color="primary"
+      (click)="actualizar()"
+      expand="block"
+      type="submit"
+    >
+      Modificar Producto
+    </ion-button>
+    <ion-button
+      block
+      color="danger"
+      (click)="eliminar()"
+      expand="block"
+      type="submit"
+    >
+      Eliminar Producto
+    </ion-button>
+  </form>
+  <img src="{{ miFoto }}" alt="" />
+  <p>{{ miFoto }}</p>
+</ion-content>

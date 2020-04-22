@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Subir articulo
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form>
+    <ion-item>
+      <ion-label position="floating"
+        >Nombre <ion-text color="danger">*</ion-text></ion-label
+      >
+      <ion-input
+        [(ngModel)]="nombre"
+        [ngModelOptions]="{ standalone: true }"
+        required
+        type="text"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"
+        >Descripcion <ion-text color="danger">*</ion-text></ion-label
+      >
+      <ion-input
+        required
+        [(ngModel)]="descripcion"
+        [ngModelOptions]="{ standalone: true }"
+        type="text"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"
+        >Costo <ion-text color="danger">*</ion-text></ion-label
+      >
+      <ion-input
+        required
+        [(ngModel)]="costo"
+        [ngModelOptions]="{ standalone: true }"
+        type="number"
+      ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating"
+        >Inventario <ion-text color="danger">*</ion-text></ion-label
+      >
+      <ion-input
+        required
+        type="number"
+        [ngModelOptions]="{ standalone: true }"
+        [(ngModel)]="inventario"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button
+      block
+      color="primary"
+      expand="block"
+      (click)="agregarArticulo()"
+      type="submit"
+    >
+      Agregar Articulo
+    </ion-button>
+  </form>
+</ion-content>

@@ -1,0 +1,50 @@
+<ion-content class="form">
+  <ion-card center class="fondologin">
+    <div>
+      <form class="fondologin">
+        <ion-icon name="person" style="zoom: 8;"></ion-icon>
+        <ion-item lines="full">
+          <ion-label position="floating">Matricula</ion-label>
+          <ion-input
+            type="text"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="matricula"
+            name="matricula"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label position="floating">Password</ion-label>
+          <ion-input
+            type="password"
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="contrasena"
+            required
+          ></ion-input>
+        </ion-item>
+
+        <ion-col>
+          <ion-button
+            type="submit"
+            color="dark"
+            expand="block"
+            (click)="login(matricula, contrasena)"
+            >Iniciar sesion
+          </ion-button>
+          <!-- <a [routerLink]="['/forgot-password']" class="small-text">Olvidaste tu contraseña</a> -->
+        </ion-col>
+        <ion-col>
+          <ion-button
+            type="submit"
+            color="dark"
+            expand="block"
+            (click)="registar()"
+            >Registrarse
+          </ion-button>
+          <!-- <a [routerLink]="['/forgot-password']" class="small-text">Olvidaste tu contraseña</a> -->
+        </ion-col>
+      </form>
+    </div>
+  </ion-card>
+</ion-content>

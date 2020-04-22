@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="form">
+  <br />
+  <ion-text color="light">
+    <h2>
+      UNIVERSIDAD TECNOLOGICA DE AGUASCALIENTES
+    </h2>
+  </ion-text>
+  <ion-card center class="fondologin">
+    <ion-card-title color="dark">
+      Registrate
+    </ion-card-title>
+    <form class="fondologin">
+      <ion-item lines="full">
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="nombre"
+          name="nombre"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Apellidos</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="apellidos"
+          name="apellidos"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="floating">Matricula de la UTA</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="matricula"
+          name="matricula"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="email"
+          name="email"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          required
+        ></ion-input>
+      </ion-item>
+
+      <br />
+      <br />
+      <ion-row>
+        <ion-col>
+          <ion-button
+            type="submit"
+            color="success"
+            (click)="registrar(nombre, apellidos, matricula, password)"
+            expand="block"
+            >Registrate
+            <ion-icon name="add-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            type="submit"
+            color="primary"
+            routerLink="/login"
+            expand="block"
+            >Iniciar sesion
+            <ion-icon name="add-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-card>
+</ion-content>

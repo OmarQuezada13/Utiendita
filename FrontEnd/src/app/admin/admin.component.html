@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Inicio
+    </ion-title>
+    <ion-button slot="end" (click)="cerrarSesion()" fill="clear" shape="round">
+      Cerrar Sesión
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-button
+    expand="block"
+    (click)="subirArticulo()"
+    fill="clear"
+    shape="round"
+  >
+    Agregar Nuevos Articulos
+  </ion-button>
+  <ion-card
+    class="card"
+    button
+    (click)="viewProduct(articulo._id)"
+    *ngFor="let articulo of articulos"
+  >
+    <ion-card-content class="ion-text-left">
+      <img
+        style="position: absolute;"
+        width="120px"
+        height="120px"
+        src="http://192.168.1.80:3000/api/imagen/articulo/{{ articulo.img }}"
+        alt=""
+      />
+    </ion-card-content>
+    <div class="contCard">
+      <ion-card-header>
+        <ion-card-title class="ion-text-right">{{
+          articulo.nombre
+        }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="precio ion-text-right">
+        ${{ articulo.costo }}.00
+      </ion-card-content>
+    </div>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,81 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Detalles del Producto
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngFor="let articulo of articulo">
+    <div class="imageCont">
+      <img
+        class="image"
+        src="http://192.168.1.80:3000/api/imagen/articulo/{{ articulo.img }}"
+        alt="Playera"
+        height="100%"
+      />
+    </div>
+    <h3>{{ articulo.nombre }}</h3>
+    <ion-item>
+      <ion-label>Talla:</ion-label>
+      <ion-select
+        value="Mediana"
+        multiple="false"
+        placeholder="Seleccione la medida"
+      >
+        <ion-select-option value="peperoni">Chica</ion-select-option>
+        <ion-select-option value="hawaii">Mediana</ion-select-option>
+        <ion-select-option value="hawaii">Grande</ion-select-option>
+        <ion-select-option value="hawaii">XGrande</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <h4>Descripcion de este producto:</h4>
+    <h5>{{ articulo.descripcion }}</h5>
+    <div class="botones">
+      <ion-button class="buy" expand="block" fill="clear" shape="round">
+        Comprar $ {{ articulo.costo }} .00
+      </ion-button>
+      <ion-button
+        class="carrito"
+        (click)="postCarrito(this.usuario._id, articulo._id, '1')"
+        expand="block"
+        fill="clear"
+        shape="round"
+      >
+        Agregar al carrito
+      </ion-button>
+    </div>
+    <br /><br />
+  </div>
+  <h4>Productos que te pueden interesar:</h4>
+
+  <div class="sugerenciaDiv">
+    <ion-card
+      button
+      (click)="viewProduct(articulo._id)"
+      class="sugerencia"
+      *ngFor="let articulo of articulos"
+    >
+      <ion-card-header>
+        <img
+          class="image"
+          src="http://192.168.1.80:3000/api/imagen/articulo/{{ articulo.img }}"
+          alt="Playera"
+          width="120px"
+          height="120px"
+        />
+      </ion-card-header>
+      <ion-card-content>
+        ${{ articulo.costo }}.00
+        <br />
+        {{ articulo.nombre }}
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <h4>Comentarios de este producto</h4>
+</ion-content>

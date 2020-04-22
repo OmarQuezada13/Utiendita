@@ -7,143 +7,33 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card button (click)="cardClick()">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card
+    class="card"
+    button
+    (click)="viewProduct(articulo._id)"
+    *ngFor="let articulo of articulos"
+  >
     <ion-card-content class="ion-text-left">
       <img
         style="position: absolute;"
         width="120px"
-        src="https://i0.pngocean.com/files/420/155/805/t-shirt-los-angeles-lakers-jersey-minnesota-vikings-golden-state-warriors-t-shirt.jpg"
+        height="120px"
+        src="http://192.168.1.80:3000/api/imagen/articulo/{{articulo.img}}"
         alt=""
       />
     </ion-card-content>
-    <ion-card-header>
-      <ion-card-title class="ion-text-right">Awesome T-SHirt</ion-card-title>
-      <ion-card-subtitle class="ion-text-right"
-        >Playera Azul Lobos UT</ion-card-subtitle
-      >
-    </ion-card-header>
-    <ion-card-content class="ion-text-right">
-      $150.00
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card button (click)="cardClick()">
-    <ion-card-content class="ion-text-left">
-      <img
-        style="position: absolute;"
-        width="120px"
-        src="https://i0.pngocean.com/files/420/155/805/t-shirt-los-angeles-lakers-jersey-minnesota-vikings-golden-state-warriors-t-shirt.jpg"
-        alt=""
-      />
-    </ion-card-content>
-    <ion-card-header>
-      <ion-card-title class="ion-text-right">Awesome T-SHirt</ion-card-title>
-      <ion-card-subtitle class="ion-text-right"
-        >Playera Azul Lobos UT</ion-card-subtitle
-      >
-    </ion-card-header>
-    <ion-card-content class="ion-text-right">
-      $150.00
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card button (click)="cardClick()">
-    <ion-card-content class="ion-text-left">
-      <img
-        style="position: absolute;"
-        width="120px"
-        src="https://i0.pngocean.com/files/420/155/805/t-shirt-los-angeles-lakers-jersey-minnesota-vikings-golden-state-warriors-t-shirt.jpg"
-        alt=""
-      />
-    </ion-card-content>
-    <ion-card-header>
-      <ion-card-title class="ion-text-right">Awesome T-SHirt</ion-card-title>
-      <ion-card-subtitle class="ion-text-right"
-        >Playera Azul Lobos UT</ion-card-subtitle
-      >
-    </ion-card-header>
-    <ion-card-content class="ion-text-right">
-      $150.00
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card button (click)="cardClick()">
-    <ion-card-content class="ion-text-left">
-      <img
-        style="position: absolute;"
-        width="120px"
-        src="https://i0.pngocean.com/files/420/155/805/t-shirt-los-angeles-lakers-jersey-minnesota-vikings-golden-state-warriors-t-shirt.jpg"
-        alt=""
-      />
-    </ion-card-content>
-    <ion-card-header>
-      <ion-card-title class="ion-text-right">Awesome T-SHirt</ion-card-title>
-      <ion-card-subtitle class="ion-text-right"
-        >Playera Azul Lobos UT</ion-card-subtitle
-      >
-    </ion-card-header>
-    <ion-card-content class="ion-text-right">
-      $150.00
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card button (click)="cardClick()">
-    <ion-card-content class="ion-text-left">
-      <img
-        style="position: absolute;"
-        width="120px"
-        src="https://i0.pngocean.com/files/420/155/805/t-shirt-los-angeles-lakers-jersey-minnesota-vikings-golden-state-warriors-t-shirt.jpg"
-        alt=""
-      />
-    </ion-card-content>
-    <ion-card-header>
-      <ion-card-title class="ion-text-right">Awesome T-SHirt</ion-card-title>
-      <ion-card-subtitle class="ion-text-right"
-        >Playera Azul Lobos UT</ion-card-subtitle
-      >
-    </ion-card-header>
-    <ion-card-content class="ion-text-right">
-      $150.00
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card button (click)="cardClick()">
-    <ion-card-content class="ion-text-left">
-      <img
-        style="position: absolute;"
-        width="120px"
-        src="https://i0.pngocean.com/files/420/155/805/t-shirt-los-angeles-lakers-jersey-minnesota-vikings-golden-state-warriors-t-shirt.jpg"
-        alt=""
-      />
-    </ion-card-content>
-    <ion-card-header>
-      <ion-card-title class="ion-text-right">Awesome T-SHirt</ion-card-title>
-      <ion-card-subtitle class="ion-text-right"
-        >Playera Azul Lobos UT</ion-card-subtitle
-      >
-    </ion-card-header>
-    <ion-card-content class="ion-text-right">
-      $150.00
-    </ion-card-content>
-  </ion-card>
-
-  <ion-card button (click)="cardClick()">
-    <ion-card-content class="ion-text-left">
-      <img
-        style="position: absolute;"
-        width="120px"
-        src="https://i0.pngocean.com/files/420/155/805/t-shirt-los-angeles-lakers-jersey-minnesota-vikings-golden-state-warriors-t-shirt.jpg"
-        alt=""
-      />
-    </ion-card-content>
-    <ion-card-header>
-      <ion-card-title class="ion-text-right">Awesome T-SHirt</ion-card-title>
-      <ion-card-subtitle class="ion-text-right"
-        >Playera Azul Lobos UT
-      </ion-card-subtitle>
-    </ion-card-header>
-    <ion-card-content class="ion-text-right">
-      $150.00
-    </ion-card-content>
+    <div class="contCard">
+      <ion-card-header>
+        <ion-card-title class="ion-text-right"
+          >{{articulo.nombre}}</ion-card-title
+        >
+      </ion-card-header>
+      <ion-card-content class="precio ion-text-right">
+        ${{articulo.costo}}.00
+      </ion-card-content>
+    </div>
   </ion-card>
 </ion-content>

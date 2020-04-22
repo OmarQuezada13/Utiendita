@@ -28,6 +28,7 @@ app.post("/registrar", (req, res) => {
     nombre: body.nombre,
     apellidos: body.apellidos,
     matricula: body.matricula,
+    rol: body.rol,
     contraseña: bcrypt.hashSync(body.contraseña, 10),
     img: body.img
   });

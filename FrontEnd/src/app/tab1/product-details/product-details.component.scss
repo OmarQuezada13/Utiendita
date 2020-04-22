@@ -1,0 +1,48 @@
+.botones {
+  position: relative;
+  position: fixed;
+  bottom: 0px;
+  z-index: 2;
+  width: 100%;
+}
+.buy {
+  z-index: 2;
+  background-color: rgba(4, 111, 250, 0.692);
+  color: black;
+  width: 100%;
+}
+.carrito {
+  background-color: rgba(15, 214, 31, 0.692);
+  color: black;
+  width: 100%;
+}
+.imageCont {
+  position: relative;
+  background-color: white;
+  position: relative;
+  width: 100%;
+  height: 250px;
+}
+.imageCont .image {
+  position: relative;
+  left: 50%;
+  top: 0px;
+  transform: translate(-50%, -0%);
+}
+.size {
+  width: 100%;
+  height: 10%;
+  background-color: rgb(180, 179, 179);
+}
+.sugerenciaDiv {
+  width: 100%;
+  height: 230px;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.sugerencia {
+  width: 150px;
+  flex-shrink: 0;
+  height: 230px;
+}

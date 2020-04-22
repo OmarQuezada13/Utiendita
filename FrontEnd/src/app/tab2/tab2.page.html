@@ -7,11 +7,74 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="productos">
+    <ion-card class="card" *ngFor="let carrito of carritos">
+      <ion-card-content class="ion-text-left">
+        <img
+          style="position: absolute;"
+          width="120px"
+          height="120px"
+          src="http://192.168.1.80:3000/api/imagen/articulo/{{carrito.articulo.img}}"
+          alt=""
+          button
+          (click)="viewProduct(carrito.articulo._id)"
+        />
+      </ion-card-content>
+      <div class="contCard">
+        <ion-card-header>
+          <ion-card-title class="ion-text-right"
+            >{{carrito.articulo.nombre}}</ion-card-title
+          >
+        </ion-card-header>
+        <ion-card-content class="precio ion-text-right">
+          <ion-item>
+            <ion-label>Cantidad</ion-label>
+            <ion-select
+              value="1"
+              [(ngModel)]="cantidad"
+              (ionChange)="putCarrito(carrito._id,cantidad)"
+              multiple="false"
+              placeholder="Cantidad"
+            >
+              <ion-select-option value="1">1</ion-select-option>
+              <ion-select-option value="2">2</ion-select-option>
+              <ion-select-option value="3">3</ion-select-option>
+              <ion-select-option value="4">4</ion-select-option>
+              <ion-select-option value="5">5</ion-select-option>
+              <ion-select-option value="6">6</ion-select-option>
+              <ion-select-option value="7">7</ion-select-option>
+              <ion-select-option value="8">8</ion-select-option>
+              <ion-select-option value="9">9</ion-select-option>
+              <ion-select-option value="10">10</ion-select-option>
+            </ion-select>
+          </ion-item>
+          ${{carrito.articulo.costo}}.00 ||
+          <button (click)="deleteCarrito(carrito._id)">
+            Eliminar Articulo
+          </button>
+        </ion-card-content>
+      </div>
+    </ion-card>
+  </div>
+  <div class="precio">
+    <ion-label class="ion-text-right">
+      <h2>Total a pagar:</h2>
+      <h2>${{totalPagar}}.00</h2>
+    </ion-label>
+  </div>
+  <div>
+    <ion-button
+      id="paypal-button"
+      (click)="compraCarrito()"
+      expand="block"
+      fill="clear"
+      shape="round"
+      *ngIf="botonPagar"
+    >
+      Pagar ${{totalPagar}}.00
+    </ion-button>
+  </div>
 </ion-content>

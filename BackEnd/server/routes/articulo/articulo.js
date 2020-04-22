@@ -4,7 +4,24 @@ const Articulo = require("../../models/articulo");
 const app = express();
 
 app.get("/obtener", (req, res) => {
-  Articulo.find().exec((err, artDB) => {
+  Articulo.find({ estatus: true }).exec((err, artDB) => {
+    if (err) {
+      return res.status(400).json({
+        ok: false,
+        err
+      });
+    }
+    return res.status(200).json({
+      ok: true,
+      count: artDB.length,
+      msg: `Se encontraron ${artDB.length} articulos`,
+      cont: artDB
+    });
+  });
+});
+app.get("/obtener/:id", (req, res) => {
+  id = req.params.id
+  Articulo.find({_id:id}).exec((err, artDB) => {
     if (err) {
       return res.status(400).json({
         ok: false,

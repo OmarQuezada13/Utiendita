@@ -47,11 +47,11 @@ app.post("/registrar", (req, res) => {
 
 app.put("/actualizar/:id", (req, res) => {
   let id = req.params.id;
-  let body = _.pick(req.body, ["cantidad"]);
+  let body = req.body;
 
   Carrito.findByIdAndUpdate(
     id,
-    body,
+    {cantidad:body.cantidad},
     { new: true, runValidators: true, context: "query" },
     (err, carDB) => {
       if (err) {

@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tus compras
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-card
+    class="card"
+    button
+    (click)="viewProduct(articulo._id)"
+    *ngFor="let compra of compras"
+  >
+    <ion-card-content class="ion-text-left">
+      <img
+        style="position: absolute;"
+        width="120px"
+        height="120px"
+        src="http://192.168.1.80:3000/api/imagen/articulo/{{
+          compra.articulo.img
+        }}"
+        alt=""
+      />
+    </ion-card-content>
+    <div class="contCard">
+      <ion-card-header>
+        <ion-card-title class="ion-text-right"
+          >{{ compra.articulo.nombre }} <br />{{
+            compra.fecha | date: "shortDate"
+          }}
+          <br />
+          Cantidad {{ compra.cantidad }}</ion-card-title
+        >
+      </ion-card-header>
+      <ion-card-content class="precio ion-text-right">
+        ${{ compra.articulo.costo }}.00
+      </ion-card-content>
+    </div>
+  </ion-card>
+</ion-content>
